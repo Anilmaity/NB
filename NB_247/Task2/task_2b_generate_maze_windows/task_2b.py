@@ -244,7 +244,7 @@ def send_data(maze_array):
 
 	##############	ADD YOUR CODE HERE	##############
 
-	inputInts = [1, 2, 3]
+	inputInts = np.ravel(np.array(maze_array))
 	inputFloats = [53.21, 17.39]
 	inputStrings = ['Hello', 'world!']
 	inputBuffer = bytearray()
@@ -254,9 +254,9 @@ def send_data(maze_array):
 
 	if return_code == sim.simx_return_ok:
 		print(retInts)
-		print(retFloats)
-		print(retStrings)
-		print(retBuffer)
+		#print(retFloats)
+		#print(retStrings)
+		#print(retBuffer)
 
 	##################################################
 

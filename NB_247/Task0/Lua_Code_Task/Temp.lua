@@ -50,6 +50,7 @@ for i = 1, #str do
         end
 ]]--
 
+--[[
 str= 'aasd 132'
 print(string.find(str , " "))
 print(string.char(string.byte(str,6)))
@@ -72,4 +73,21 @@ if str == 'aasd 132' then
     print('good')
 end
 
+]]--
 
+cellvalue = 7
+    cellBinaryValue = ''
+    if cellvalue <= 15 then
+        for i = 1 , 4 do
+        if cellvalue / (2^(4-i)) >= 1 then
+            cellvalue = cellvalue - 2^(4-i)
+            cellBinaryValue = cellBinaryValue..'1'
+        else
+            cellBinaryValue = cellBinaryValue..'0'
+        end
+
+        end
+        print(cellBinaryValue)
+
+
+    end

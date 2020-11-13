@@ -1,10 +1,3 @@
---
--- Created by IntelliJ IDEA.
--- User: Anil
--- Date: 11/13/2020
--- Time: 12:54 AM
--- To change this template use File | Settings | File Templates.
---
 --[[
 *****************************************************************************************
 *
@@ -218,6 +211,7 @@ function receiveData(inInts,inFloats,inStrings,inBuffer)
 
     --*******************************************************
     --               ADD YOUR CODE HERE
+    maze_array = inInts
 
 
 
@@ -256,7 +250,7 @@ function generateHorizontalWalls()
         for j = 1 , 11 do
             wall = createWall()
             sim.setObjectParent(wall,sim.getObjectHandle('Base'),false)
-            sim.setObjectName(wall,'H'..tostring(i)..tostring(j))
+            sim.setObjectName(wall,'H'..tostring(j)..tostring(i))
             sim.setObjectPosition(wall,-1,{(-0.45+(i-1)*0.1), (-0.5+(j-1)*0.1),0.08})
         end
     end
@@ -298,7 +292,7 @@ function generateVerticalWalls()
             wall = createWall()
             sim.setObjectOrientation(wall,-1,{0,0,(3.14/2)})
             sim.setObjectParent(wall,sim.getObjectHandle('Base'),false)
-            sim.setObjectName(wall,'V'..tostring(i)..tostring(j))
+            sim.setObjectName(wall,'V'..tostring(j)..tostring(i))
             sim.setObjectPosition(wall,-1,{(-0.5+(j-1)*0.1), (-0.45+(i-1)*0.1),0.08})
         end
     end
@@ -336,7 +330,6 @@ function deleteWalls()
     --*******************************************************
     --               ADD YOUR CODE HERE
 
-
     for i = 1 , 11 do
         for j = 1, 10 do
             Hwall = sim.getObjectHandle('H'..tostring(i)..tostring(j))
@@ -345,6 +338,9 @@ function deleteWalls()
             sim.removeObject(Vwall)
         end
     end
+
+
+
 
 
 
@@ -380,10 +376,44 @@ function createMaze()
 
     --*******************************************************
     --               ADD YOUR CODE HERE
+    j = 0
+    i = 1
+    for index = 1 , 100 do
+        j= j + 1
 
+    cellvalue = maze_array[index]
+    cellBinaryValue = ''
+    if cellvalue <= 15 then
+        for p = 1 , 4 do
+        if cellvalue / (2^(4-p)) >= 1 then
+            cellvalue = cellvalue - 2^(4-p)
+            cellBinaryValue = cellBinaryValue..'1'
+        else
+            cellBinaryValue = cellBinaryValue..'0'
+        end
+        end
 
+        S = string.byte(cellBinaryValue,1)
+        E = string.byte(cellBinaryValue,2)
+        --N = string.byte(cellBinaryValue,3)
+        --W = string.byte(cellBinaryValue,4)
 
+        if E == 48 and j ~= 10 then
+            E_Wall = sim.getObjectHandle('V'..tostring(j+1)..tostring(i))
+            sim.removeObject(E_Wall)
+        end
 
+        if S == 48 and j ~= 10 and i ~= 10  then
+            S_Wall = sim.getObjectHandle('H'..tostring(i+1)..tostring(j))
+            sim.removeObject(S_Wall)
+        end
+        if j >= 10 then
+            i = i + 1
+            j = 0
+        end
+
+    end
+    end
 
     --*******************************************************
 end
@@ -485,8 +515,6 @@ function sysCall_cleanup()
 end
 
 -- See the user manual or the available code snippets for additional callback functions and details
-
-
 
 
 
