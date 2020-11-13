@@ -1,6 +1,6 @@
 import cv2
 import os
-import task_1a_explore_opencv.Task_1A_Part2.Videos as path
+import NB_247.Task1.task_1a_explore_opencv.Task_1A_Part2.Videos as path
 
 vid_file_path =  path + 'ballmotion.m4v'
 cap = cv2.VideoCapture(vid_file_path)

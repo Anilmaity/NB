@@ -74,62 +74,28 @@ def applyPerspectiveTransform(input_img):
 
     ##############	ADD YOUR CODE HERE	##############
 
-    gray_img = cv2.cvtColor(input_img, cv2.COLOR_BGR2GRAY)  # Converting the image to gray scale
-    temp, binary_image = cv2.threshold(gray_img, 100, 255, cv2.THRESH_BINARY)  # Converting the image into binary image pixil will be either 0 or 255
+    gray_img = cv2.cvtColor(input_img, cv2.COLOR_RGB2GRAY)  # Converting the image to gray scale
+    temp, binary_image = cv2.threshold(gray_img, 230, 255, cv2.THRESH_BINARY)  # Converting the image into binary image pixil will be either 0 or 255
+
+
     contours, hierarchy = cv2.findContours(binary_image, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)  # Finding the contours
     contour_img = cv2.drawContours(gray_img, contours, 1, (0, 0, 0), 1)
+    #cv2.imshow('a',binary_image)
+    #cv2.waitKey()
 
     #############################################################
-    # In this section finding the 4 end points of the maze their in the contours
-
-    '''         x1,y1________x2,y2
-                    |        |
-              x3,y3 |________| x4,y4
-    '''
-
-    n = contours[1].ravel()  # n contain all the point of outer contour  detected
-    max = n[0] + n[1]  # n[even numbers] is value of row and n[odd number] is column of the maze
-    min = n[0] + n[1]
-    max2 = 0
-    max3 = 0
-
-    # basically the n[x] hold the location of pixil where their a point (point which lies on the outer lines in maze)
-    # so x1,y1 which we want will ne in n[] and has the minimum value
-    # From this logic all 4 point can be available
-
-    for x in range(len(n)):
-        if x % 2 == 0:
-            if n[x + 1] + n[x] > max:
-                max = n[x + 1] + n[x]
-                x4 = n[x]
-                y4 = n[x + 1]
-            if n[x + 1] + n[x] < min:
-                min = n[x + 1] + n[x]
-                x1 = n[x]
-                y1 = n[x + 1]
-            if n[x] > 256:
-                if n[x] - n[x + 1] > max2:
-                    max2 = n[x] - n[x + 1]
-                    x2 = n[x]
-                    y2 = n[x + 1]
-            if n[x + 1] > 256:
-                if n[x + 1] - n[x] > max3:
-                    max3 = n[x + 1] - n[x]
-                    x3 = n[x]
-                    y3 = n[x + 1]
+    x, y, w, h = cv2.boundingRect(contours[0])
 
     # ____________________________________________________________
 
-    pts1 = np.float32([[x1, y1], [x2, y2], [x3, y3], [x4, y4]])   # end ponits of maze
+    pts1 = np.float32([[x, y], [x+w, y], [x, y+h], [x+w, y+h]])   # end ponits of maze
     pts2 = np.float32([[0, 0], [500, 0], [0, 500], [500, 500]]) # end point of image which is 500*500
     M = cv2.getPerspectiveTransform(pts1, pts2)
     warped_img = cv2.warpPerspective(gray_img, M, (500, 500))  # warping image
 
-    # some times the end points are not aligned with the image so manually assign black colour to the border
-    warped_img[0::, 0:2] = 0
-    warped_img[0:2, 0::] = 0
-    warped_img[0::, 498:500] = 0
-    warped_img[498:500, 0::] = 0
+    warped_img = cv2.cvtColor(warped_img,cv2.COLOR_GRAY2BGR)
+    #cv2.imshow('a', warped_img)
+    #cv2.waitKey()
 
     ##################################################
 

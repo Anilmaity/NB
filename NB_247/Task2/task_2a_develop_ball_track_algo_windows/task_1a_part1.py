@@ -79,17 +79,17 @@ def scan_image(img_file_path):
 
     ##############	ADD YOUR CODE HERE	##############
 
-    img = cv2.imread(img_file_path)  # reading image
+    img = img_file_path  # reading image
     # reading image in grayscale
-    img_count = cv2.imread(img_file_path, cv2.IMREAD_GRAYSCALE)
+    img_count = cv2.cvtColor(img_file_path, cv2.COLOR_BGR2GRAY)
 
     shape_dict = {}
 
     # thresholding the greyscale image
-    _, threshold = cv2.threshold(img_count, 240, 255, cv2.THRESH_BINARY)
+    _, threshold = cv2.threshold(img_count, 150, 255, cv2.THRESH_BINARY)
     contours, image = cv2.findContours(
         threshold, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)  # contouring all shapes in image
-    # print("contours", len(contours))
+    #print("contours", len(contours[0]))
     for i in range(1, 4):
         # converting original image to hsv
         hsv = cv2.cvtColor(img, cv2.COLOR_BGR2HSV)
@@ -109,8 +109,8 @@ def scan_image(img_file_path):
 
         # thresholding the original image
         _, threshold = cv2.threshold(img, 240, 255, cv2.THRESH_BINARY)
-        contours, image = cv2.findContours(
-            mask, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)  # contouring the selected shapes
+        contour, image = cv2.findContours(
+            mask, cv2.RETR_TREE, cv2.CHAIN_APPROX_NONE)  # contouring the selected shapes
 
         for cnt in contours:  # loop for all selected shapes
             approx = cv2.approxPolyDP(cnt, 0.01*cv2.arcLength(cnt, True), True)
@@ -122,7 +122,10 @@ def scan_image(img_file_path):
             cY = int(M["m01"] / M["m00"])  # determing centroid y coordinate
             # print(area)
             # print(cX)
-            # print(cY)
+
+
+            cv2.imshow('a', img)
+            cv2.waitKey()
 
             # appending the required information for the shape
             temp_list = []
@@ -179,8 +182,7 @@ def scan_image(img_file_path):
                 # checkng for trapezium
                 elif int(l4) < int(l2):
                     shape_dict['Trapezium'] = temp_list
-
-                # print(approx)
+                #print(approx)
             # checking for circle
             elif len(approx) == 16 or len(approx) == 15:
                 shape_dict['Circle'] = temp_list

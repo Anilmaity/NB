@@ -32,6 +32,8 @@
 ## You have to implement this task with the three available ##
 ## modules for this task (numpy,opencv,os,sys,traceback)    ##
 ##############################################################
+import time
+
 import numpy as np
 import cv2
 import os, sys
@@ -101,12 +103,8 @@ def init_remote_api_server():
 	##############	ADD YOUR CODE HERE	##############
 
 	sim.simxFinish(-1)  # just in case, close all opened connections
-	client_id = sim.simxStart("127.0.0.1", 19997, True, True, 5000, 5) # start aconnection
-	if client_id != -1:
-		print("Connected to remote API server")
-	else:
-		print("Not connected to remote API server")
-		sys.exit("Could not connect")
+	client_id = sim.simxStart("127.0.0.1", 19997, True, True, 5000, 5)  # start aconnection
+
 
 	##################################################
 
@@ -146,7 +144,11 @@ def start_simulation():
 	return_code = 0
 
 	##############	ADD YOUR CODE HERE	##############
-	
+
+	return_code = sim.simxStartSimulation(client_id, sim.simx_opmode_blocking)
+	time.sleep(0.5)
+	return_code = sim.simxStartSimulation(client_id, sim.simx_opmode_oneshot)
+
 	
 
 	##################################################
@@ -189,9 +191,18 @@ def get_vision_sensor_image():
 	return_code = 0
 
 	##############	ADD YOUR CODE HERE	##############
-	
-	
 
+	# Get the handle of vision sensor
+	code, visionSensorHandle = sim.simxGetObjectHandle(client_id, 'vision_sensor_1', sim.simx_opmode_blocking)
+
+	# Get the image of vision sensor
+	return_code, image_resolution, vision_sensor_image = sim.simxGetVisionSensorImage(client_id, visionSensorHandle, 0, sim.simx_opmode_streaming)
+
+	time.sleep(1)
+	return_code, image_resolution, vision_sensor_image = sim.simxGetVisionSensorImage(client_id, visionSensorHandle, 0,  sim.simx_opmode_buffer)
+	print(return_code)
+	print(len(image_resolution))
+	print(len(vision_sensor_image))
 	##################################################
 
 	return vision_sensor_image, image_resolution, return_code
@@ -232,8 +243,12 @@ def transform_vision_sensor_image(vision_sensor_image, image_resolution):
 	transformed_image = None
 
 	##############	ADD YOUR CODE HERE	##############
-	
-	
+
+	transformed_image = np.array(vision_sensor_image, dtype=np.uint8)
+	transformed_image.resize([image_resolution[0], image_resolution[1], 3])
+
+	transformed_image = cv2.cvtColor(transformed_image, cv2.COLOR_BGR2RGB)
+	transformed_image = cv2.flip(transformed_image, 0)
 
 	##################################################
 	
@@ -271,7 +286,8 @@ def stop_simulation():
 	return_code = 0
 
 	##############	ADD YOUR CODE HERE	##############
-	
+
+	return_code = sim.simxStopSimulation(client_id, sim.simx_opmode_oneshot)
 	
 
 	##################################################
@@ -306,8 +322,8 @@ def exit_remote_api_server():
 	global client_id
 
 	##############	ADD YOUR CODE HERE	##############
-	
-	
+
+	sim.simxFinish(-1)
 
 	##################################################
 
