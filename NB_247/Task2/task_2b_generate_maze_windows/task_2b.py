@@ -150,16 +150,13 @@ def get_vision_sensor_image():
 	##############	ADD YOUR CODE HERE	##############
 
 	# Get the handle of vision sensor
-	code, visionSensorHandle = sim.simxGetObjectHandle(client_id, 'Vision_sensor', sim.simx_opmode_blocking)
-
+	code , visionSensorHandle = sim.simxGetObjectHandle(client_id, 'Vision_sensor', sim.simx_opmode_blocking)
+	print(code)
 	# Get the image of vision sensor
 	return_code, image_resolution, vision_sensor_image = sim.simxGetVisionSensorImage(client_id, visionSensorHandle, 0, sim.simx_opmode_streaming)
+	time.sleep(0.1)
+	return_code, image_resolution, vision_sensor_image = sim.simxGetVisionSensorImage(client_id, visionSensorHandle, 0,sim.simx_opmode_buffer)
 
-
-
-	print(return_code)
-	print(len(image_resolution))
-	print(len(vision_sensor_image))
 
 	##################################################
 
@@ -205,7 +202,9 @@ def transform_vision_sensor_image(vision_sensor_image, image_resolution):
 	transformed_image = None
 
 	##############	ADD YOUR CODE HERE	##############
-	
+
+	transformed_image = np.array(vision_sensor_image, dtype=np.uint8)
+	transformed_image.resize([image_resolution[0], image_resolution[1], 3])
 	
 
 	##################################################

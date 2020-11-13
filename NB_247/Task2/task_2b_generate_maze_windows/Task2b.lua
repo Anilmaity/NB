@@ -211,6 +211,7 @@ function receiveData(inInts,inFloats,inStrings,inBuffer)
 
     --*******************************************************
     --               ADD YOUR CODE HERE
+
     maze_array = inInts
 
 
@@ -251,7 +252,7 @@ function generateHorizontalWalls()
             wall = createWall()
             sim.setObjectParent(wall,sim.getObjectHandle('Base'),false)
             sim.setObjectName(wall,'H'..tostring(j)..tostring(i))
-            sim.setObjectPosition(wall,-1,{(-0.45+(i-1)*0.1), (-0.5+(j-1)*0.1),0.08})
+            sim.setObjectPosition(wall,-1,{(-0.45+(i-1)*0.1), (0.5+(j-1)*-0.1),0.08})
         end
     end
 
@@ -293,7 +294,7 @@ function generateVerticalWalls()
             sim.setObjectOrientation(wall,-1,{0,0,(3.14/2)})
             sim.setObjectParent(wall,sim.getObjectHandle('Base'),false)
             sim.setObjectName(wall,'V'..tostring(j)..tostring(i))
-            sim.setObjectPosition(wall,-1,{(-0.5+(j-1)*0.1), (-0.45+(i-1)*0.1),0.08})
+            sim.setObjectPosition(wall,-1,{(-0.5+(j-1)*0.1), (0.45+(i-1)*-0.1),0.08})
         end
     end
 
@@ -376,7 +377,8 @@ function createMaze()
 
     --*******************************************************
     --               ADD YOUR CODE HERE
-    j = 0
+
+     j = 0
     i = 1
     for index = 1 , 100 do
         j= j + 1
@@ -414,6 +416,11 @@ function createMaze()
 
     end
     end
+
+
+
+
+
 
     --*******************************************************
 end
