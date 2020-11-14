@@ -24,23 +24,24 @@
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/NB_247/Task2/task_2b_generate_maze_windows" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/NB_247/Task1/task_1b_detect_and_encode_maze" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Projects\EYRC\NiraksakBot\NB\NB_247\Task2\task_2b_generate_maze_windows" />
-      <recent name="C:\Projects\EYRC\NiraksakBot\NB\NB_247\Task2\task_2a_develop_ball_track_algo_windows" />
-      <recent name="C:\Projects\EYRC\NiraksakBot\NB\NB_247\Task1\task_1b_detect_and_encode_maze" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Projects\EYRC\NiraksakBot\NB\NB_247\Task1\task_1b_detect_and_encode_maze\test_cases" />
       <recent name="C:\Projects\EYRC\NiraksakBot\NB" />
       <recent name="C:\Projects\EYRC\NiraksakBot\NB\NB_247\Submission\Task 1" />
       <recent name="C:\Projects\EYRC\NiraksakBot\NB\NB_247\Task1" />
       <recent name="C:\Projects\EYRC\NiraksakBot\NB\NB_247\Task0" />
     </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Projects\EYRC\NiraksakBot\NB\NB_247\Task1\task_1b_detect_and_encode_maze" />
+      <recent name="C:\Projects\EYRC\NiraksakBot\NB\NB_247\Task2\task_2b_generate_maze_windows" />
+      <recent name="C:\Projects\EYRC\NiraksakBot\NB\NB_247\Task2\task_2a_develop_ball_track_algo_windows" />
+    </key>
   </component>
-  <component name="RunManager" selected="Python.task_2a">
+  <component name="RunManager" selected="Python.task_2b">
     <configuration name="AP" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
       <module name="NB" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -146,6 +147,27 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="task_1b (2)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="NB" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="C:\My_Programs\Anaconda3\envs\NB_247\python.exe" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/NB_247/Task1/task_1b_detect_and_encode_maze" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/NB_247/Task1/task_1b_detect_and_encode_maze/task_1b.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="task_1b" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="NB" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -159,6 +181,27 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/NB_247/Task2/task_2a_develop_ball_track_algo_windows/task_1b.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="task_1b" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="NB" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="C:\My_Programs\Anaconda3\envs\NB_247\python.exe" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/NB_247/Task1/task_1b_detect_and_encode_maze" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="C:\Projects\EYRC\NiraksakBot\NB\NB_247\Task1\task_1b_detect_and_encode_maze\test_cases\task_1b.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -209,44 +252,23 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="test_task0" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="NB" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="C:\My_Programs\Anaconda3\envs\NB_247\python.exe" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/CoppeliaSim" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/CoppeliaSim/test_task0.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
     <list>
       <item itemvalue="Python.task_2b" />
       <item itemvalue="Python.Unnamed" />
       <item itemvalue="Python.AP" />
       <item itemvalue="Python.task_2a" />
-      <item itemvalue="Python.test_task0" />
       <item itemvalue="Python.init_remoteapi" />
       <item itemvalue="Python.task_1b" />
       <item itemvalue="Python.task_1b (1)" />
+      <item itemvalue="Python.task_1b (2)" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.task_2a" />
         <item itemvalue="Python.task_1b (1)" />
+        <item itemvalue="Python.task_1b (2)" />
+        <item itemvalue="Python.task_1b (2)" />
+        <item itemvalue="Python.task_2a" />
         <item itemvalue="Python.task_1b" />
-        <item itemvalue="Python.init_remoteapi" />
-        <item itemvalue="Python.test_task0" />
       </list>
     </recent_temporary>
   </component>
@@ -278,22 +300,22 @@
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="1060" y="455" key="FileChooserDialogImpl/0.0.2560.1400@0.0.2560.1400" timestamp="1605189846765" />
-    <state width="1714" height="424" key="GridCell.Tab.0.bottom" timestamp="1605276254936">
+    <state width="1276" height="319" key="GridCell.Tab.0.bottom" timestamp="1605332481993">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="1714" height="424" key="GridCell.Tab.0.bottom/0.0.2560.1400@0.0.2560.1400" timestamp="1605276254936" />
-    <state width="1714" height="424" key="GridCell.Tab.0.center" timestamp="1605276254936">
+    <state width="1276" height="319" key="GridCell.Tab.0.bottom/0.0.2560.1400@0.0.2560.1400" timestamp="1605332481993" />
+    <state width="1276" height="319" key="GridCell.Tab.0.center" timestamp="1605332481993">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="1714" height="424" key="GridCell.Tab.0.center/0.0.2560.1400@0.0.2560.1400" timestamp="1605276254936" />
-    <state width="1714" height="424" key="GridCell.Tab.0.left" timestamp="1605276254936">
+    <state width="1276" height="319" key="GridCell.Tab.0.center/0.0.2560.1400@0.0.2560.1400" timestamp="1605332481993" />
+    <state width="1276" height="319" key="GridCell.Tab.0.left" timestamp="1605332481993">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="1714" height="424" key="GridCell.Tab.0.left/0.0.2560.1400@0.0.2560.1400" timestamp="1605276254936" />
-    <state width="1714" height="424" key="GridCell.Tab.0.right" timestamp="1605276254936">
+    <state width="1276" height="319" key="GridCell.Tab.0.left/0.0.2560.1400@0.0.2560.1400" timestamp="1605332481993" />
+    <state width="1276" height="319" key="GridCell.Tab.0.right" timestamp="1605332481993">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="1714" height="424" key="GridCell.Tab.0.right/0.0.2560.1400@0.0.2560.1400" timestamp="1605276254936" />
+    <state width="1276" height="319" key="GridCell.Tab.0.right/0.0.2560.1400@0.0.2560.1400" timestamp="1605332481993" />
     <state width="1714" height="424" key="GridCell.Tab.1.bottom" timestamp="1605276254936">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>

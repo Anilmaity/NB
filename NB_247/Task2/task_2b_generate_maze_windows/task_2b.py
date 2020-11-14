@@ -154,7 +154,7 @@ def get_vision_sensor_image():
 	print(code)
 	# Get the image of vision sensor
 	return_code, image_resolution, vision_sensor_image = sim.simxGetVisionSensorImage(client_id, visionSensorHandle, 0, sim.simx_opmode_streaming)
-	time.sleep(0.1)
+	time.sleep(1)
 	return_code, image_resolution, vision_sensor_image = sim.simxGetVisionSensorImage(client_id, visionSensorHandle, 0,sim.simx_opmode_buffer)
 
 
@@ -208,7 +208,10 @@ def transform_vision_sensor_image(vision_sensor_image, image_resolution):
 
 	transformed_image = cv2.cvtColor(transformed_image, cv2.COLOR_BGR2RGB)
 	transformed_image = cv2.flip(transformed_image, 0)
-	
+
+	time.sleep(10)
+
+
 
 	##################################################
 	
@@ -679,7 +682,7 @@ if __name__ == "__main__":
 											print('\n[ERROR] Failed to save Transformed maze image from CoppeliaSim in \'generated_images\' folder.')
 
 										# Stop the simulation
-										return_code = sim.simxStopSimulation(client_id, sim.simx_opmode_onshot)
+										return_code = sim.simxStopSimulation(client_id, sim.simx_opmode_oneshot)
 
 										# Making sure that last command sent out had time to arrive
 										sim.simxGetPingTime(client_id)
