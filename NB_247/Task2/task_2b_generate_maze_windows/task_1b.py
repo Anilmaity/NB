@@ -75,9 +75,9 @@ def applyPerspectiveTransform(input_img):
     ##############	ADD YOUR CODE HERE	##############
 
     gray_img = cv2.cvtColor(input_img, cv2.COLOR_BGR2GRAY)  # Converting the image to gray scale
-    temp, binary_image = cv2.threshold(gray_img, 90, 255, cv2.THRESH_BINARY)  # Converting the image into binary image pixil will be either 0 or 255
+    temp, binary_image = cv2.threshold(gray_img, 80, 255, cv2.THRESH_BINARY)  # Converting the image into binary image pixil will be either 0 or 255
     contours, hierarchy = cv2.findContours(binary_image, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)  # Finding the contours
-    contour_img = cv2.drawContours(gray_img, contours, 1, (0, 0, 0), 2)
+    contour_img = cv2.drawContours(gray_img, contours, -1, (0, 0, 0), 2)
 
     #############################################################
     # In this section finding the 4 end points of the maze their in the contours
@@ -97,7 +97,7 @@ def applyPerspectiveTransform(input_img):
     # so x1,y1 which we want will ne in n[] and has the minimum value
     # From this logic all 4 point can be available
 
-
+    x1, y1, x2, y2, x3, y3, x4, y4 = 0,0,0,0,0,0,0,0
     for x in range(len(n)):
         if x % 2 == 0:
             if n[x + 1] + n[x] > max:
@@ -133,6 +133,9 @@ def applyPerspectiveTransform(input_img):
     warped_img[0::, 498:500] = 0
     warped_img[498:500, 0::] = 0
 
+    #cv2.imshow('warped img', warped_img)
+    #cv2.waitKey()
+
     ##################################################
 
     return warped_img
@@ -162,7 +165,7 @@ def detectMaze(warped_img):
     maze_array = []
 
     ##############	ADD YOUR CODE HERE	##############
-    temp, binary_image = cv2.threshold(warped_img, 130, 255, cv2.THRESH_BINARY)  # converting image to binary
+    temp, binary_image = cv2.threshold(warped_img, 80, 255, cv2.THRESH_BINARY)  # converting image to binary
 
     cellMatrix = []  # it will contain all the values of maze
 
@@ -195,13 +198,13 @@ def detectMaze(warped_img):
             e_avg /= 50
 
             cell_sum = 0  # initilize the cell_sum as 0 for each loop
-            if w_avg < 0.7 * 255:
+            if w_avg < 0.5 * 255:
                 cell_sum += 1
-            if n_avg < 0.7 * 255:
+            if n_avg < 0.5 * 255:
                 cell_sum += 2
-            if e_avg < 0.7 * 255:
+            if e_avg < 0.5 * 255:
                 cell_sum += 4
-            if s_avg < 0.7 * 255:
+            if s_avg < 0.5 * 255:
                 cell_sum += 8
             cellMatrix.append(cell_sum)  # storing the cell_sum in cellmatrix
 
@@ -257,7 +260,7 @@ if __name__ == "__main__":
     img_dir_path = 'test_cases/'
 
     # path to 'maze00.jpg' image file
-    file_num = 0
+    file_num = 6
     img_file_path = img_dir_path + 'maze0' + str(file_num) + '.jpg'
 
     print('\n============================================')

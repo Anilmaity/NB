@@ -6,12 +6,12 @@
 *        		===============================================
 *
 *  This script is to implement Task 1A - Part 1 of Nirikshak Bot (NB) Theme (eYRC 2020-21).
-*  
+*
 *  This software is made available on an "AS IS WHERE IS BASIS".
 *  Licensee/end user indemnifies and will keep e-Yantra indemnified from
-*  any and all claim(s) that emanate from the use of the Software or 
+*  any and all claim(s) that emanate from the use of the Software or
 *  breach of the terms of this agreement.
-*  
+*
 *  e-Yantra - An MHRD project under National Mission on Education using ICT (NMEICT)
 *
 *****************************************************************************************
@@ -69,7 +69,7 @@ def scan_image(img_file_path):
     `shapes` :              [ dictionary ]
         details of colored (non-white) shapes present in image at img_file_path
         { 'Shape' : ['color', Area, cX, cY] }
-    
+
     Example call:
     ---
     shapes = scan_image(img_file_path)
@@ -77,7 +77,9 @@ def scan_image(img_file_path):
 
     global shapes
 
+
     ##############	ADD YOUR CODE HERE	##############
+    temp_list = []
 
     img = cv2.imread(img_file_path)  # reading image
     # reading image in grayscale
@@ -95,24 +97,34 @@ def scan_image(img_file_path):
         hsv = cv2.cvtColor(img, cv2.COLOR_BGR2HSV)
         # print(len(contours))
         if i == 1:  # loop 1 to detect red shapes
-            lower_range = np.array([0, 50, 50])
-            upper_range = np.array([10, 255, 255])
-        elif i == 2:  # loop 1 to detect blue shapes
             lower_range = np.array([94, 80, 2])
             upper_range = np.array([126, 255, 255])
-        elif i == 3:  # loop 1 to detect green shapes
+
+        elif i == 2:  # loop 1 to detect blue shapes
             lower_range = np.array([25, 52, 72])
             upper_range = np.array([102, 255, 255])
 
+        elif i == 3:  # loop 1 to detect green shapes
+            lower_range = np.array([0, 100, 100])
+            upper_range = np.array([100, 255, 255])
+
         # selecting shapes with colour based on loops
         mask = cv2.inRange(hsv, lower_range, upper_range)
+
+
 
         # thresholding the original image
         _, threshold = cv2.threshold(img, 240, 255, cv2.THRESH_BINARY)
         contours, image = cv2.findContours(
             mask, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)  # contouring the selected shapes
 
+
         for cnt in contours:  # loop for all selected shapes
+
+            #cv2.imshow("mask", mask)
+            #cv2.waitKey()
+            #cv2.destroyAllWindows()
+
             approx = cv2.approxPolyDP(cnt, 0.01*cv2.arcLength(cnt, True), True)
             cv2.drawContours(img, [approx], 0, (0), 5)  # drawing contours
             area = cv2.contourArea(cnt)  # determining area
@@ -125,16 +137,17 @@ def scan_image(img_file_path):
             # print(cY)
 
             # appending the required information for the shape
-            temp_list = []
+
             if i == 1:
-                temp_list.append("red")
-            elif i == 2:
                 temp_list.append("blue")
-            elif i == 3:
+            elif i == 2:
                 temp_list.append("green")
+            elif i == 3:
+                temp_list.append("red")
             temp_list.append(area)
             temp_list.append(cX)
             temp_list.append(cY)
+            print(temp_list)
 
             if len(approx) == 4:  # for shape with 4 sides
                 x, y, w, h = cv2.boundingRect(cnt)
@@ -153,13 +166,13 @@ def scan_image(img_file_path):
                 a4 = approx[3][0][0]
                 b4 = approx[3][0][1]
 
-                l1 = ((a2-a1)*(a2-a1) + (b2-b1)*(b2-b1))**0.5  # length 1
+                l1 = ((a2-a1)(a2-a1) + (b2-b1)(b2-b1))**0.5  # length 1
                 # print("length of line1: ", int(l1))
-                l2 = ((a3-a2)*(a3-a2) + (b3-b2)*(b3-b2))**0.5  # length 2
+                l2 = ((a3-a2)(a3-a2) + (b3-b2)(b3-b2))**0.5  # length 2
                 # print("length of line2: ", int(l2))
-                l3 = ((a4-a3)*(a4-a3) + (b4-b3)*(b4-b3))**0.5  # length 3
+                l3 = ((a4-a3)(a4-a3) + (b4-b3)(b4-b3))**0.5  # length 3
                 # print("length of line3: ", int(l3))
-                l4 = ((a4-a1)*(a4-a1) + (b4-b1)*(b4-b1))**0.5  # length 4
+                l4 = ((a4-a1)(a4-a1) + (b4-b1)(b4-b1))**0.5  # length 3
                 # print("length of line4: ", int(l4))
                 # print(a1, b1, a2, b2, a3, b3, a4, b4)
 
@@ -182,7 +195,7 @@ def scan_image(img_file_path):
 
                 # print(approx)
             # checking for circle
-            elif len(approx) == 16 or len(approx) == 15:
+            elif len(approx) >= 10:
                 shape_dict['Circle'] = temp_list
                 # print("circle")
             # checking for triangle
@@ -206,15 +219,14 @@ def scan_image(img_file_path):
     # cv2.imshow("shapes", img)
     # cv2.waitKey(0)
     # cv2.destroyAllWindows()
-
+    print(shapes)
 
     ##################################################
 
     return shapes
 
-
 # NOTE:	YOU ARE NOT ALLOWED TO MAKE ANY CHANGE TO THIS FUNCTION
-# 
+#
 # Function Name:    main
 #        Inputs:    None
 #       Outputs:    None

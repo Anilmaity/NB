@@ -1,20 +1,20 @@
 '''
-*****************************************************************************************
+*******************************
 *
 *        		===============================================
 *           		Nirikshak Bot (NB) Theme (eYRC 2020-21)
 *        		===============================================
 *
 *  This script is to implement Task 1A - Part 1 of Nirikshak Bot (NB) Theme (eYRC 2020-21).
-*  
+*
 *  This software is made available on an "AS IS WHERE IS BASIS".
 *  Licensee/end user indemnifies and will keep e-Yantra indemnified from
-*  any and all claim(s) that emanate from the use of the Software or 
+*  any and all claim(s) that emanate from the use of the Software or
 *  breach of the terms of this agreement.
-*  
+*
 *  e-Yantra - An MHRD project under National Mission on Education using ICT (NMEICT)
 *
-*****************************************************************************************
+*******************************
 '''
 
 # Team ID:			[ Team-ID ]
@@ -34,7 +34,6 @@
 import cv2
 import numpy as np
 import os
-
 ##############################################################
 
 
@@ -69,7 +68,7 @@ def scan_image(img_file_path):
     `shapes` :              [ dictionary ]
         details of colored (non-white) shapes present in image at img_file_path
         { 'Shape' : ['color', Area, cX, cY] }
-    
+
     Example call:
     ---
     shapes = scan_image(img_file_path)
@@ -81,36 +80,43 @@ def scan_image(img_file_path):
 
     img = img_file_path  # reading image
     # reading image in grayscale
-    img_count = cv2.cvtColor(img_file_path, cv2.COLOR_BGR2GRAY)
+    img_count = cv2.cvtColor(img_file_path, cv2.COLOR_RGB2GRAY)
 
     shape_dict = {}
-
+    full_temp_list = []
     # thresholding the greyscale image
-    _, threshold = cv2.threshold(img_count, 150, 255, cv2.THRESH_BINARY)
+    _, threshold = cv2.threshold(img_count, 240, 255, cv2.THRESH_BINARY)
     contours, image = cv2.findContours(
         threshold, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)  # contouring all shapes in image
-    #print("contours", len(contours[0]))
+    # print("contours", len(contours))
     for i in range(1, 4):
         # converting original image to hsv
         hsv = cv2.cvtColor(img, cv2.COLOR_BGR2HSV)
         # print(len(contours))
-        if i == 1:  # loop 1 to detect red shapes
-            lower_range = np.array([0, 50, 50])
-            upper_range = np.array([10, 255, 255])
-        elif i == 2:  # loop 1 to detect blue shapes
+        if i == 1:  # loop 1 to detect blue shapes
             lower_range = np.array([94, 80, 2])
             upper_range = np.array([126, 255, 255])
-        elif i == 3:  # loop 1 to detect green shapes
+        elif i == 2:  # loop 1 to detect green shapes
             lower_range = np.array([25, 52, 72])
             upper_range = np.array([102, 255, 255])
-
+        elif i == 3:  # loop 1 to detect red shapes
+            lower_range = np.array([0, 70, 50])
+            upper_range = np.array([10, 255, 255])
         # selecting shapes with colour based on loops
-        mask = cv2.inRange(hsv, lower_range, upper_range)
+        mask1 = cv2.inRange(hsv, lower_range, upper_range)
+        if i == 3:
+
+            mask2 = cv2.inRange(hsv, np.array([170, 70, 50]), np.array([180, 255, 255]))
+            mask = mask1 + mask2
+        else:
+            mask = mask1
+
+
 
         # thresholding the original image
         _, threshold = cv2.threshold(img, 240, 255, cv2.THRESH_BINARY)
-        contour, image = cv2.findContours(
-            mask, cv2.RETR_TREE, cv2.CHAIN_APPROX_NONE)  # contouring the selected shapes
+        contours, image = cv2.findContours(
+            mask, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)  # contouring the selected shapes
 
         for cnt in contours:  # loop for all selected shapes
             approx = cv2.approxPolyDP(cnt, 0.01*cv2.arcLength(cnt, True), True)
@@ -122,20 +128,17 @@ def scan_image(img_file_path):
             cY = int(M["m01"] / M["m00"])  # determing centroid y coordinate
             # print(area)
             # print(cX)
-
-
-            cv2.imshow('a', img)
-            cv2.waitKey()
+            # print(cY)
 
             # appending the required information for the shape
             temp_list = []
             if i == 1:
-                temp_list.append("red")
-            elif i == 2:
                 temp_list.append("blue")
-            elif i == 3:
+            elif i == 2:
                 temp_list.append("green")
-            temp_list.append(area)
+            elif i == 3:
+                temp_list.append("red")
+            # temp_list.append(area)
             temp_list.append(cX)
             temp_list.append(cY)
 
@@ -144,7 +147,7 @@ def scan_image(img_file_path):
                 # print(x,y)
                 # print(w, h)
                 # aspect_ratio = int(int(w)/int(h))
-                # print("aspect ratio", aspect_ratio)
+                # print("aspect ratio", aspect_ratio)``
 
                 # determining coordinates (a, b)
                 a1 = approx[0][0][0]
@@ -156,13 +159,13 @@ def scan_image(img_file_path):
                 a4 = approx[3][0][0]
                 b4 = approx[3][0][1]
 
-                l1 = ((a2-a1)*(a2-a1) + (b2-b1)*(b2-b1))**0.5  # length 1
+                l1 = ((a2-a1)(a2-a1) + (b2-b1)(b2-b1))**0.5  # length 1
                 # print("length of line1: ", int(l1))
-                l2 = ((a3-a2)*(a3-a2) + (b3-b2)*(b3-b2))**0.5  # length 2
+                l2 = ((a3-a2)(a3-a2) + (b3-b2)(b3-b2))**0.5  # length 2
                 # print("length of line2: ", int(l2))
-                l3 = ((a4-a3)*(a4-a3) + (b4-b3)*(b4-b3))**0.5  # length 3
+                l3 = ((a4-a3)(a4-a3) + (b4-b3)(b4-b3))**0.5  # length 3
                 # print("length of line3: ", int(l3))
-                l4 = ((a4-a1)*(a4-a1) + (b4-b1)*(b4-b1))**0.5  # length 4
+                l4 = ((a4-a1)(a4-a1) + (b4-b1)(b4-b1))**0.5  # length 3
                 # print("length of line4: ", int(l4))
                 # print(a1, b1, a2, b2, a3, b3, a4, b4)
 
@@ -182,10 +185,12 @@ def scan_image(img_file_path):
                 # checkng for trapezium
                 elif int(l4) < int(l2):
                     shape_dict['Trapezium'] = temp_list
-                #print(approx)
+
+                # print(approx)
             # checking for circle
-            elif len(approx) == 16 or len(approx) == 15:
-                shape_dict['Circle'] = temp_list
+            elif len(approx) >= 10:
+                full_temp_list.append(temp_list)
+                shape_dict['Circle'] = full_temp_list
                 # print("circle")
             # checking for triangle
             elif len(approx) == 3:
@@ -209,14 +214,13 @@ def scan_image(img_file_path):
     # cv2.waitKey(0)
     # cv2.destroyAllWindows()
 
-
     ##################################################
 
     return shapes
 
 
 # NOTE:	YOU ARE NOT ALLOWED TO MAKE ANY CHANGE TO THIS FUNCTION
-# 
+#
 # Function Name:    main
 #        Inputs:    None
 #       Outputs:    None
@@ -224,7 +228,7 @@ def scan_image(img_file_path):
 #                   of colored (non-white) shapes present in 'Sample1.png', it then asks the user whether
 #                   to repeat the same on all images present in 'Samples' folder or not
 
-if __name__ == '__main__':
+if __name__ == '_main_':
 
     curr_dir_path = os.getcwd()
     print('Currently working in ' + curr_dir_path)
@@ -243,13 +247,15 @@ if __name__ == '__main__':
         print('\nFound Sample' + str(file_num) + '.png')
 
     else:
-        print('\n[ERROR] Sample' + str(file_num) + '.png not found. Make sure "Samples" folder has the selected file.')
+        print('\n[ERROR] Sample' + str(file_num) +
+              '.png not found. Make sure "Samples" folder has the selected file.')
         exit()
 
     print('\n============================================')
 
     try:
-        print('\nRunning scan_image function with ' + img_file_path + ' as an argument')
+        print('\nRunning scan_image function with ' +
+              img_file_path + ' as an argument')
         shapes = scan_image(img_file_path)
 
         if type(shapes) is dict:
@@ -257,16 +263,19 @@ if __name__ == '__main__':
             print('\nOutput generated. Please verify.')
 
         else:
-            print('\n[ERROR] scan_image function returned a ' + str(type(shapes)) + ' instead of a dictionary.\n')
+            print('\n[ERROR] scan_image function returned a ' +
+                  str(type(shapes)) + ' instead of a dictionary.\n')
             exit()
 
     except Exception:
-        print('\n[ERROR] scan_image function is throwing an error. Please debug scan_image function')
+        print(
+            '\n[ERROR] scan_image function is throwing an error. Please debug scan_image function')
         exit()
 
     print('\n============================================')
 
-    choice = input('\nWant to run your script on all the images in Samples folder ? ==>> "y" or "n": ')
+    choice = input(
+        '\nWant to run your script on all the images in Samples folder ? ==>> "y" or "n": ')
 
     if choice == 'y':
 
@@ -275,7 +284,8 @@ if __name__ == '__main__':
         for file_num in range(file_count):
 
             # path to image file
-            img_file_path = img_dir_path + 'Sample' + str(file_num + 1) + '.png'
+            img_file_path = img_dir_path + \
+                'Sample' + str(file_num + 1) + '.png'
 
             print('\n============================================')
             print('\nLooking for Sample' + str(file_num + 1) + '.png')
@@ -284,14 +294,15 @@ if __name__ == '__main__':
                 print('\nFound Sample' + str(file_num + 1) + '.png')
 
             else:
-                print('\n[ERROR] Sample' + str(
-                    file_num + 1) + '.png not found. Make sure "Samples" folder has the selected file.')
+                print('\n[ERROR] Sample' + str(file_num + 1) +
+                      '.png not found. Make sure "Samples" folder has the selected file.')
                 exit()
 
             print('\n============================================')
 
             try:
-                print('\nRunning scan_image function with ' + img_file_path + ' as an argument')
+                print('\nRunning scan_image function with ' +
+                      img_file_path + ' as an argument')
                 shapes = scan_image(img_file_path)
 
                 if type(shapes) is dict:
@@ -299,12 +310,13 @@ if __name__ == '__main__':
                     print('\nOutput generated. Please verify.')
 
                 else:
-                    print(
-                        '\n[ERROR] scan_image function returned a ' + str(type(shapes)) + ' instead of a dictionary.\n')
+                    print('\n[ERROR] scan_image function returned a ' +
+                          str(type(shapes)) + ' instead of a dictionary.\n')
                     exit()
 
             except Exception:
-                print('\n[ERROR] scan_image function is throwing an error. Please debug scan_image function')
+                print(
+                    '\n[ERROR] scan_image function is throwing an error. Please debug scan_image function')
                 exit()
 
             print('\n============================================')

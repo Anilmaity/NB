@@ -104,6 +104,8 @@ def init_remote_api_server():
 
 	sim.simxFinish(-1)  # just in case, close all opened connections
 	client_id = sim.simxStart("127.0.0.1", 19997, True, True, 5000, 5)  # start aconnection
+	time.sleep(1)
+	print(client_id)
 
 
 	##################################################
@@ -146,8 +148,12 @@ def start_simulation():
 	##############	ADD YOUR CODE HERE	##############
 
 	return_code = sim.simxStartSimulation(client_id, sim.simx_opmode_blocking)
-	time.sleep(0.5)
-	return_code = sim.simxStartSimulation(client_id, sim.simx_opmode_oneshot)
+	time.sleep(1)
+	return_code = sim.simxStartSimulation(client_id, sim.simx_opmode_buffer)
+
+	returnCode = sim.simxSynchronous(client_id, True)
+	returnCode = sim.simxSynchronousTrigger(client_id)
+
 
 	
 
@@ -156,7 +162,7 @@ def start_simulation():
 	return return_code
 
 
-def get_vision_sensor_image():
+def get_vision_sensor_image(visionSensorHandle):
 	
 	"""
 	Purpose:
@@ -193,13 +199,14 @@ def get_vision_sensor_image():
 	##############	ADD YOUR CODE HERE	##############
 
 	# Get the handle of vision sensor
-	code, visionSensorHandle = sim.simxGetObjectHandle(client_id, 'vision_sensor_1', sim.simx_opmode_blocking)
+	#code, visionSensorHandle = sim.simxGetObjectHandle(client_id, 'vision_sensor_1', sim.simx_opmode_blocking)
 
 	# Get the image of vision sensor
 	return_code, image_resolution, vision_sensor_image = sim.simxGetVisionSensorImage(client_id, visionSensorHandle, 0, sim.simx_opmode_streaming)
 
-	time.sleep(2)
-	return_code, image_resolution, vision_sensor_image = sim.simxGetVisionSensorImage(client_id, visionSensorHandle, 0,  sim.simx_opmode_buffer)
+	if return_code != sim.simx_return_ok:
+		return_code, image_resolution, vision_sensor_image = sim.simxGetVisionSensorImage(client_id, visionSensorHandle,
+																						  0, sim.simx_opmode_oneshot_wait)
 
 	##################################################
 
@@ -359,7 +366,7 @@ if __name__ == "__main__":
 		print('Your current directory is: ', os.getcwd())
 		print('Make sure task_1b.py is present in this current directory.\n')
 		sys.exit()
-		
+
 	except Exception as e:
 		print('Your task_1b.py throwed an Exception, kindly debug your code!\n')
 		traceback.print_exc(file=sys.stdout)
@@ -375,7 +382,7 @@ if __name__ == "__main__":
 		print('Your current directory is: ', os.getcwd())
 		print('Make sure task_1a_part1.py is present in this current directory.\n')
 		sys.exit()
-		
+
 	except Exception as e:
 		print('Your task_1a_part1.py throwed an Exception, kindly debug your code!\n')
 		traceback.print_exc(file=sys.stdout)
@@ -410,7 +417,7 @@ if __name__ == "__main__":
 				traceback.print_exc(file=sys.stdout)
 				print()
 				sys.exit()
-		
+
 		else:
 			print('\n[ERROR] Failed connecting to Remote API server!')
 			print('[WARNING] Make sure the CoppeliaSim software is running and')
@@ -425,7 +432,7 @@ if __name__ == "__main__":
 		traceback.print_exc(file=sys.stdout)
 		print()
 		sys.exit()
-	
+
 	# Get image array and its resolution from Vision Sensor in ComppeliaSim scene
 	try:
 		vision_sensor_image, image_resolution, return_code = get_vision_sensor_image()
@@ -446,7 +453,7 @@ if __name__ == "__main__":
 					# Get the resultant warped transformed vision sensor image after applying Perspective Transform
 					try:
 						warped_img = task_1b.applyPerspectiveTransform(transformed_image)
-						
+
 						if (type(warped_img) is np.ndarray):
 
 							# Get the 'shapes' dictionary by passing the 'warped_img' to scan_image function
@@ -465,7 +472,7 @@ if __name__ == "__main__":
 										# Ending the Simulation
 										try:
 											return_code = stop_simulation()
-											
+
 											if (return_code == sim.simx_return_novalue_flag):
 												print('\nSimulation stopped correctly.')
 
@@ -486,12 +493,12 @@ if __name__ == "__main__":
 													traceback.print_exc(file=sys.stdout)
 													print()
 													sys.exit()
-											
+
 											else:
 												print('\n[ERROR] Failed stopping the simulation in CoppeliaSim server!')
 												print('[ERROR] stop_simulation function is not configured correctly, check the code!')
 												print('Stop the CoppeliaSim simulation manually.')
-											
+
 											print()
 											sys.exit()
 
@@ -501,32 +508,32 @@ if __name__ == "__main__":
 											traceback.print_exc(file=sys.stdout)
 											print()
 											sys.exit()
-									
+
 									else:
 										print('\n[WARNING] Kindly provide input of "q" or "Q" only!')
 										print('Stop the CoppeliaSim simulation manually.')
 										print()
 										sys.exit()
-								
+
 								else:
 									print('\n[ERROR] scan_image function returned a ' + str(type(shapes)) + ' instead of a dictionary.')
 									print('Stop the CoppeliaSim simulation manually.')
 									print()
 									sys.exit()
-							
+
 							except Exception:
 								print('\n[ERROR] Your scan_image function in task_1a_part1.py throwed an Exception, kindly debug your code!')
 								print('Stop the CoppeliaSim simulation manually.\n')
 								traceback.print_exc(file=sys.stdout)
 								print()
 								sys.exit()
-						
+
 						else:
 							print('\n[ERROR] applyPerspectiveTransform function is not configured correctly, check the code.')
 							print('Stop the CoppeliaSim simulation manually.')
 							print()
 							sys.exit()
-					
+
 					except Exception:
 						print('\n[ERROR] Your applyPerspectiveTransform function in task_1b.py throwed an Exception, kindly debug your code!')
 						print('Stop the CoppeliaSim simulation manually.\n')

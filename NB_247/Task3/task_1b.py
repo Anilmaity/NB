@@ -75,27 +75,25 @@ def applyPerspectiveTransform(input_img):
     ##############	ADD YOUR CODE HERE	##############
 
     gray_img = cv2.cvtColor(input_img, cv2.COLOR_RGB2GRAY)  # Converting the image to gray scale
-    temp, binary_image = cv2.threshold(gray_img, 230, 255, cv2.THRESH_BINARY)  # Converting the image into binary image pixil will be either 0 or 255
-
+    temp, binary_image = cv2.threshold(gray_img, 230, 255,
+                                       cv2.THRESH_BINARY)  # Converting the image into binary image pixil will be either 0 or 255
 
     contours, hierarchy = cv2.findContours(binary_image, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)  # Finding the contours
-    contour_img = cv2.drawContours(gray_img, contours, 1, (0, 0, 0), 1)
-    #cv2.imshow('a',binary_image)
-    #cv2.waitKey()
+    # contour_img = cv2.drawContours(input_img, contours, 1, (0, 0, 0), 1)
+    # cv2.imshow('a',binary_image)
+    # cv2.waitKey()
 
     #############################################################
+    x, y, w, h = 0, 0, 0, 0
     x, y, w, h = cv2.boundingRect(contours[0])
 
     # ____________________________________________________________
 
-    pts1 = np.float32([[x, y], [x+w, y], [x, y+h], [x+w, y+h]])   # end ponits of maze
-    pts2 = np.float32([[0, 0], [500, 0], [0, 500], [500, 500]]) # end point of image which is 500*500
+    pts1 = np.float32([[x, y], [x + w, y], [x, y + h], [x + w, y + h]])  # end ponits of maze
+    pts2 = np.float32([[0, 0], [1280, 0], [0, 1280], [1280, 1280]])  # end point of image which is 500*500
     M = cv2.getPerspectiveTransform(pts1, pts2)
-    warped_img = cv2.warpPerspective(gray_img, M, (500, 500))  # warping image
+    warped_img = cv2.warpPerspective(input_img, M, (1280, 1280))  # warping image
 
-    warped_img = cv2.cvtColor(warped_img,cv2.COLOR_GRAY2BGR)
-    #cv2.imshow('a', warped_img)
-    #cv2.waitKey()
 
     ##################################################
 
@@ -132,7 +130,8 @@ def detectMaze(warped_img):
 
     for k in range(0, 10):
         for l in range(0, 10):
-            cellimage = binary_image[(k * 50):(k * 50) + 50, (l * 50):(l * 50) + 50]  # their will be 100 small images  each 50*50 represent the cell image
+            cellimage = binary_image[(k * 50):(k * 50) + 50,
+                        (l * 50):(l * 50) + 50]  # their will be 100 small images  each 50*50 represent the cell image
 
             # W_side holds the value of all 1st column which is west side of the image
             # CellImage side decide the value assign to it
@@ -318,4 +317,3 @@ if __name__ == "__main__":
     else:
 
         print('')
-

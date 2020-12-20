@@ -100,6 +100,8 @@ def applyPerspectiveTransform(input_img):
     # so x1,y1 which we want will ne in n[] and has the minimum value
     # From this logic all 4 point can be available
 
+    x1, y1, x2, y2, x3, y3, x4, y4 = 0,0,0,0,0,0,0,0
+
     if(len(n)>50):
           for x in range(len(n)):
             if x % 2 == 0:
@@ -168,13 +170,14 @@ def detectMaze(warped_img):
     maze_array = []
 
     ##############	ADD YOUR CODE HERE	##############
+
     temp, binary_image = cv2.threshold(warped_img, 130, 255, cv2.THRESH_BINARY)  # converting image to binary
 
     cellMatrix = []  # it will contain all the values of maze
 
     for k in range(0, 10):
         for l in range(0, 10):
-            cellimage = binary_image[(k * 50):(k * 50) + 50, (l * 50):(l * 50) + 50]  # their will be 100 small images  each 50*50 represent the cell image
+            cellimage = warped_img[(k * 50):(k * 50) + 50, (l * 50):(l * 50) + 50]  # their will be 100 small images  each 50*50 represent the cell image
 
             # W_side holds the value of all 1st column which is west side of the image
             # CellImage side decide the value assign to it

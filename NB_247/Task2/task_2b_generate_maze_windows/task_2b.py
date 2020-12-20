@@ -151,7 +151,6 @@ def get_vision_sensor_image():
 
 	# Get the handle of vision sensor
 	code , visionSensorHandle = sim.simxGetObjectHandle(client_id, 'Vision_sensor', sim.simx_opmode_blocking)
-	print(code)
 	# Get the image of vision sensor
 	return_code, image_resolution, vision_sensor_image = sim.simxGetVisionSensorImage(client_id, visionSensorHandle, 0, sim.simx_opmode_streaming)
 	time.sleep(1)
@@ -209,7 +208,7 @@ def transform_vision_sensor_image(vision_sensor_image, image_resolution):
 	transformed_image = cv2.cvtColor(transformed_image, cv2.COLOR_BGR2RGB)
 	transformed_image = cv2.flip(transformed_image, 0)
 
-	time.sleep(10)
+
 
 
 
