@@ -20,10 +20,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e2cfe038-ee25-4da7-b564-316541c7d0c7" name="Default Changelist" comment="task 3 update">
-      <change afterPath="$PROJECT_DIR$/NB_247/Submission/Task2/NB_247_Task_2A/task_1a_part1.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NB_247/Task3/task_1a_part1.py" beforeDir="false" afterPath="$PROJECT_DIR$/NB_247/Task3/task_1a_part1.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NB_247/Task3/task_2a.py" beforeDir="false" afterPath="$PROJECT_DIR$/NB_247/Task3/task_2a.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NB_247/Task2/task_2a_develop_ball_track_algo_windows/task_3.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NB_247/Task3/task_3.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NB_247/Task3/task_3_scene.ttt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NB_247/Task3/test_task_3.exe" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,19 +54,19 @@
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
+    <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Projects\EYRC\NiraksakBot\NB\NB_247\Task3" />
       <recent name="C:\Projects\EYRC\NiraksakBot\NB\NB_247\Task2\task_2a_develop_ball_track_algo_windows" />
+      <recent name="C:\Projects\EYRC\NiraksakBot\NB\NB_247\Submission\Task2\NB_247_Task_2A" />
+      <recent name="C:\Projects\EYRC\NiraksakBot\NB\NB_247\Submission\Task2\NB_247_Task_2B" />
+      <recent name="C:\Projects\EYRC\NiraksakBot\NB\NB_247\Task1\task_1a_explore_opencv\Task_1A_Part1" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Projects\EYRC\NiraksakBot\NB\NB_247\Task2\task_2a_develop_ball_track_algo_windows" />
+      <recent name="C:\Projects\EYRC\NiraksakBot\NB\NB_247\Task3" />
       <recent name="C:\Projects\EYRC\NiraksakBot\NB\NB_247\Task1\task_1b_detect_and_encode_maze\test_cases" />
       <recent name="C:\Projects\EYRC\NiraksakBot\NB" />
       <recent name="C:\Projects\EYRC\NiraksakBot\NB\NB_247\Submission\Task 1" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Projects\EYRC\NiraksakBot\NB\NB_247\Task3" />
-      <recent name="C:\Projects\EYRC\NiraksakBot\NB\NB_247\Submission\Task2\NB_247_Task_2A" />
-      <recent name="C:\Projects\EYRC\NiraksakBot\NB\NB_247\Submission\Task2\NB_247_Task_2B" />
-      <recent name="C:\Projects\EYRC\NiraksakBot\NB\NB_247\Task2\task_2a_develop_ball_track_algo_windows" />
-      <recent name="C:\Projects\EYRC\NiraksakBot\NB\NB_247\Task1\task_1a_explore_opencv\Task_1A_Part1" />
     </key>
   </component>
   <component name="RunManager" selected="Python.task_3">
@@ -316,7 +316,14 @@
       <option name="project" value="LOCAL" />
       <updated>1608469861037</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="task 3 update">
+      <created>1608746166349</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1608746166349</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -340,10 +347,10 @@
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="736" y="356" width="1089" height="737" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.2560.1400@0.0.2560.1400" timestamp="1605188609615" />
-    <state x="453" y="506" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1607879723642">
+    <state x="453" y="506" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1608746330149">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state x="453" y="506" key="#com.intellij.fileTypes.FileTypeChooser/0.0.2560.1400@0.0.2560.1400" timestamp="1607879723642" />
+    <state x="453" y="506" key="#com.intellij.fileTypes.FileTypeChooser/0.0.2560.1400@0.0.2560.1400" timestamp="1608746330149" />
     <state x="1149" y="456" width="1265" height="488" key="EnvironmentVariablesDialog" timestamp="1605118206389">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
@@ -396,10 +403,10 @@
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="782" y="346" key="SettingsEditor/0.0.2560.1400@0.0.2560.1400" timestamp="1605209022611" />
-    <state x="873" y="434" key="Vcs.Push.Dialog.v2" timestamp="1608746117217">
+    <state x="873" y="434" key="Vcs.Push.Dialog.v2" timestamp="1608746174318">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state x="873" y="434" key="Vcs.Push.Dialog.v2/0.0.2560.1400@0.0.2560.1400" timestamp="1608746117217" />
+    <state x="873" y="434" key="Vcs.Push.Dialog.v2/0.0.2560.1400@0.0.2560.1400" timestamp="1608746174318" />
     <state x="1098" y="615" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1605117713394">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
