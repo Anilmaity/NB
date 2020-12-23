@@ -151,8 +151,6 @@ def start_simulation():
 	time.sleep(1)
 	return_code = sim.simxStartSimulation(client_id, sim.simx_opmode_buffer)
 
-	returnCode = sim.simxSynchronous(client_id, True)
-	returnCode = sim.simxSynchronousTrigger(client_id)
 
 
 	
@@ -205,6 +203,7 @@ def get_vision_sensor_image(visionSensorHandle):
 	return_code, image_resolution, vision_sensor_image = sim.simxGetVisionSensorImage(client_id, visionSensorHandle, 0, sim.simx_opmode_streaming)
 
 	if return_code != sim.simx_return_ok:
+		#print('wait')
 		return_code, image_resolution, vision_sensor_image = sim.simxGetVisionSensorImage(client_id, visionSensorHandle,
 																						  0, sim.simx_opmode_oneshot_wait)
 
@@ -248,6 +247,7 @@ def transform_vision_sensor_image(vision_sensor_image, image_resolution):
 	transformed_image = None
 
 	##############	ADD YOUR CODE HERE	##############
+
 
 	transformed_image = np.array(vision_sensor_image, dtype=np.uint8)
 	transformed_image.resize([image_resolution[0], image_resolution[1], 3])

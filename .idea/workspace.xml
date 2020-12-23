@@ -19,27 +19,11 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e2cfe038-ee25-4da7-b564-316541c7d0c7" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/NB_247/Task3/remoteApi.dll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/NB_247/Task3/sim.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/NB_247/Task3/simConst.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/NB_247/Task3/task_2a.py" afterDir="false" />
+    <list default="true" id="e2cfe038-ee25-4da7-b564-316541c7d0c7" name="Default Changelist" comment="task 3 update">
+      <change afterPath="$PROJECT_DIR$/NB_247/Submission/Task2/NB_247_Task_2A/task_1a_part1.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NB_247/Submission/Task 1/NB_247_Task_1C/task_1c_bbp.ttm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/NB_247/Task1/task_1a_explore_opencv/Task_1A_Part1/task_1a_part1.py" beforeDir="false" afterPath="$PROJECT_DIR$/NB_247/Task1/task_1a_explore_opencv/Task_1A_Part1/task_1a_part1.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NB_247/Task1/task_1b_detect_and_encode_maze/Temp_task_1b_functions.py" beforeDir="false" afterPath="$PROJECT_DIR$/NB_247/Task1/task_1b_detect_and_encode_maze/Temp_task_1b_functions.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NB_247/Task1/task_1b_detect_and_encode_maze/task_1b.py" beforeDir="false" afterPath="$PROJECT_DIR$/NB_247/Task1/task_1b_detect_and_encode_maze/task_1b.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NB_247/Task1/task_1b_detect_and_encode_maze/test_cases/maze00.csv" beforeDir="false" afterPath="$PROJECT_DIR$/NB_247/Task1/task_1b_detect_and_encode_maze/test_cases/maze00.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NB_247/Task2/task_2a_develop_ball_track_algo_windows/task_1a_part1.py" beforeDir="false" afterPath="$PROJECT_DIR$/NB_247/Task3/task_1a_part1.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NB_247/Task2/task_2a_develop_ball_track_algo_windows/task_1b.py" beforeDir="false" afterPath="$PROJECT_DIR$/NB_247/Task3/task_1b.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NB_247/Task2/task_2a_develop_ball_track_algo_windows/task_2a.py" beforeDir="false" afterPath="$PROJECT_DIR$/NB_247/Task2/task_2a_develop_ball_track_algo_windows/task_2a.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NB_247/Task2/task_2b_generate_maze_windows/Task2b.lua" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/NB_247/Task2/task_2b_generate_maze_windows/generated_images/result_maze06.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/NB_247/Task2/task_2b_generate_maze_windows/generated_images/result_maze06.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NB_247/Task2/task_2b_generate_maze_windows/task_1b.py" beforeDir="false" afterPath="$PROJECT_DIR$/NB_247/Task2/task_2b_generate_maze_windows/task_1b.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NB_247/Task2/task_2b_generate_maze_windows/task_2b.py" beforeDir="false" afterPath="$PROJECT_DIR$/NB_247/Task2/task_2b_generate_maze_windows/task_2b.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NB_247/Task2/task_2b_generate_maze_windows/task_2b_scene.ttt" beforeDir="false" afterPath="$PROJECT_DIR$/NB_247/Task2/task_2b_generate_maze_windows/task_2b_scene.ttt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NB_247/Task2/task_2b_generate_maze_windows/test_cases/maze06.csv" beforeDir="false" afterPath="$PROJECT_DIR$/NB_247/Task2/task_2b_generate_maze_windows/test_cases/maze06.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NB_247/Task3/task_1a_part1.py" beforeDir="false" afterPath="$PROJECT_DIR$/NB_247/Task3/task_1a_part1.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NB_247/Task3/task_2a.py" beforeDir="false" afterPath="$PROJECT_DIR$/NB_247/Task3/task_2a.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -299,11 +283,11 @@
     <list>
       <item itemvalue="Python.AP" />
       <item itemvalue="Python.Unnamed" />
+      <item itemvalue="Python.task_2b" />
       <item itemvalue="Python.task_1a_part1 (1)" />
       <item itemvalue="Python.task_1a_part1" />
       <item itemvalue="Python.task_2a (1)" />
       <item itemvalue="Python.task_2a" />
-      <item itemvalue="Python.task_2b" />
       <item itemvalue="Python.task_3" />
     </list>
     <recent_temporary>
@@ -325,6 +309,14 @@
       <option name="presentableId" value="Default" />
       <updated>1605116647021</updated>
     </task>
+    <task id="LOCAL-00001" summary="task 3 update">
+      <created>1608469861037</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1608469861037</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -338,6 +330,10 @@
       </map>
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="task 3 update" />
+    <option name="LAST_COMMIT_MESSAGE" value="task 3 update" />
   </component>
   <component name="WindowStateProjectService">
     <state x="736" y="356" width="1089" height="737" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1605188609615">
@@ -356,25 +352,25 @@
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="1060" y="455" key="FileChooserDialogImpl/0.0.2560.1400@0.0.2560.1400" timestamp="1606054062615" />
-    <state width="1336" height="370" key="GridCell.Tab.0.bottom" timestamp="1608122235274">
+    <state width="1238" height="367" key="GridCell.Tab.0.bottom" timestamp="1608745801885">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="1336" height="370" key="GridCell.Tab.0.bottom/0.0.2560.1400@0.0.2560.1400" timestamp="1608122235274" />
+    <state width="1238" height="367" key="GridCell.Tab.0.bottom/0.0.2560.1400@0.0.2560.1400" timestamp="1608745801885" />
     <state width="1204" height="335" key="GridCell.Tab.0.bottom/0.0.3072.1688@0.0.3072.1688" timestamp="1605974441904" />
-    <state width="1336" height="370" key="GridCell.Tab.0.center" timestamp="1608122235274">
+    <state width="1238" height="367" key="GridCell.Tab.0.center" timestamp="1608745801885">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="1336" height="370" key="GridCell.Tab.0.center/0.0.2560.1400@0.0.2560.1400" timestamp="1608122235274" />
+    <state width="1238" height="367" key="GridCell.Tab.0.center/0.0.2560.1400@0.0.2560.1400" timestamp="1608745801885" />
     <state width="1204" height="335" key="GridCell.Tab.0.center/0.0.3072.1688@0.0.3072.1688" timestamp="1605974441904" />
-    <state width="1336" height="370" key="GridCell.Tab.0.left" timestamp="1608122235274">
+    <state width="1238" height="367" key="GridCell.Tab.0.left" timestamp="1608745801885">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="1336" height="370" key="GridCell.Tab.0.left/0.0.2560.1400@0.0.2560.1400" timestamp="1608122235274" />
+    <state width="1238" height="367" key="GridCell.Tab.0.left/0.0.2560.1400@0.0.2560.1400" timestamp="1608745801885" />
     <state width="1204" height="335" key="GridCell.Tab.0.left/0.0.3072.1688@0.0.3072.1688" timestamp="1605974441904" />
-    <state width="1336" height="370" key="GridCell.Tab.0.right" timestamp="1608122235274">
+    <state width="1238" height="367" key="GridCell.Tab.0.right" timestamp="1608745801885">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="1336" height="370" key="GridCell.Tab.0.right/0.0.2560.1400@0.0.2560.1400" timestamp="1608122235274" />
+    <state width="1238" height="367" key="GridCell.Tab.0.right/0.0.2560.1400@0.0.2560.1400" timestamp="1608745801885" />
     <state width="1204" height="335" key="GridCell.Tab.0.right/0.0.3072.1688@0.0.3072.1688" timestamp="1605974441904" />
     <state width="2517" height="490" key="GridCell.Tab.1.bottom" timestamp="1608067989807">
       <screen x="0" y="0" width="2560" height="1400" />
@@ -400,6 +396,10 @@
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="782" y="346" key="SettingsEditor/0.0.2560.1400@0.0.2560.1400" timestamp="1605209022611" />
+    <state x="873" y="434" key="Vcs.Push.Dialog.v2" timestamp="1608746117217">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state x="873" y="434" key="Vcs.Push.Dialog.v2/0.0.2560.1400@0.0.2560.1400" timestamp="1608746117217" />
     <state x="1098" y="615" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1605117713394">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>

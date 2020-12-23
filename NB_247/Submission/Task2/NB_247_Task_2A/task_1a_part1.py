@@ -124,13 +124,8 @@ def scan_image(img_file_path):
             area = cv2.contourArea(cnt)  # determining area
             M = cv2.moments(cnt)
             # determing centroid X coordinate
-            if int(M["m00"]) != 0:
-                cX = int(M["m10"] / M["m00"])
-                cY = int(M["m01"] / M["m00"])  # determing centroid y coordinate
-            else:
-                cX = int(M["m10"] / 1)
-                cY = int(M["m01"] / 1)
-
+            cX = int(M["m10"] / float(M["m00"]))
+            cY = int(M["m01"] / M["m00"])  # determing centroid y coordinate
             # print(area)
             # print(cX)
             # print(cY)
@@ -154,6 +149,42 @@ def scan_image(img_file_path):
                 # aspect_ratio = int(int(w)/int(h))
                 # print("aspect ratio", aspect_ratio)``
 
+                # determining coordinates (a, b)
+                a1 = approx[0][0][0]
+                b1 = approx[0][0][1]
+                a2 = approx[1][0][0]
+                b2 = approx[1][0][1]
+                a3 = approx[2][0][0]
+                b3 = approx[2][0][1]
+                a4 = approx[3][0][0]
+                b4 = approx[3][0][1]
+
+                l1 = ((a2-a1)(a2-a1) + (b2-b1)(b2-b1))**0.5  # length 1
+                # print("length of line1: ", int(l1))
+                l2 = ((a3-a2)(a3-a2) + (b3-b2)(b3-b2))**0.5  # length 2
+                # print("length of line2: ", int(l2))
+                l3 = ((a4-a3)(a4-a3) + (b4-b3)(b4-b3))**0.5  # length 3
+                # print("length of line3: ", int(l3))
+                l4 = ((a4-a1)(a4-a1) + (b4-b1)(b4-b1))**0.5  # length 3
+                # print("length of line4: ", int(l4))
+                # print(a1, b1, a2, b2, a3, b3, a4, b4)
+
+                # checking for square or parallelogram
+                if int(l1) <= int(l2)+2 and int(l1) >= int(l2)-2 and int(l1) <= int(l3)+2 and int(l1) >= int(l3)-2 and int(l1) <= int(l4)+2 and int(l1) >= int(l4)-2:
+
+                    if int(l1) <= h+5 and int(l1) >= h-5:
+                        shape_dict['Square'] = temp_list
+                    else:
+                        shape_dict['Parallelogram'] = temp_list
+                # checking for rectangle or parallelogram
+                elif int(l1) == int(l3) and int(l2) == int(l4):
+                    if int(l1) <= h+5 and int(l1) >= h-5:
+                        shape_dict['Rectangle'] = temp_list
+                    else:
+                        shape_dict['Parallelogram'] = temp_list
+                # checkng for trapezium
+                elif int(l4) < int(l2):
+                    shape_dict['Trapezium'] = temp_list
 
                 # print(approx)
             # checking for circle
@@ -161,6 +192,18 @@ def scan_image(img_file_path):
                 full_temp_list.append(temp_list)
                 shape_dict['Circle'] = full_temp_list
                 # print("circle")
+            # checking for triangle
+            elif len(approx) == 3:
+                # print("triangle")
+                shape_dict['Triangle'] = temp_list
+            # checking for pentagon
+            elif len(approx) == 5:
+                # print("pentagon")
+                shape_dict['Pentagon'] = temp_list
+            # checking for hexagon
+            elif len(approx) == 6:
+                # print("pentagon")
+                shape_dict['Hexagon'] = temp_list
             # print(shape_dict)
     #     # M = cv2.moments(cnt)
     #     # print( M )
